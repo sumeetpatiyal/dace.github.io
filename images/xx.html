@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Style for the button container */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Style for each button and its content */
+        .button-content-container {
+            text-align: center;
+            flex-grow: 1;
+            margin: 10px;
+        }
+
+        .stylish-button {
+            background-color: #3498db; /* Blue background color */
+            color: #fff; /* White text color */
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 50%; /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s; /* Smooth animation */
+        }
+
+        /* Style for the button's content container */
+        .button-content {
+            display: none; /* Initially hidden */
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Style for showing the content when button is active */
+        .stylish-button.active + .button-content-container .button-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <div class="button-content-container">
+            <button class="stylish-button" data-target="content-1">Button 1</button>
+            <div class="button-content" id="content-1">
+                <!-- Content for Button 1 -->
+                This is the content for Button 1.
+            </div>
+        </div>
+        <div class="button-content-container">
+            <button class="stylish-button" data-target="content-2">Button 2</button>
+            <div class="button-content" id="content-2">
+                <!-- Content for Button 2 -->
+                This is the content for Button 2.
+            </div>
+        </div>
+        <div class="button-content-container">
+            <button class="stylish-button" data-target="content-3">Button 3</button>
+            <div class="button-content" id="content-3">
+                <!-- Content for Button 3 -->
+                This is the content for Button 3.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get references to the buttons
+        const buttons = document.querySelectorAll(".stylish-button");
+
+        // Add click event listeners to each button
+        buttons.forEach((button) => {
+            button.addEventListener("click", function () {
+                // Hide all content elements
+                document.querySelectorAll(".button-content").forEach((content) => {
+                    content.style.display = "none";
+                });
+
+                // Show the content associated with the clicked button
+                const targetContentId = button.getAttribute("data-target");
+                const contentToDisplay = document.getElementById(targetContentId);
+                contentToDisplay.style.display = "block";
+            });
+        });
+    </script>
+</body>
+</html>
+
